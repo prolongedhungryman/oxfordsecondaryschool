@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus News — Oxford Secondary School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .news-page-hero {
+            background: var(--navy);
+            padding: 160px 40px 80px;
+            text-align: center;
+        }
+
+        .news-page-hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .news-page-hero p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .filter-bar {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 70px;
+            z-index: 50;
+        }
+
+        .filter-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+        }
+
+        .filter-btn {
+            padding: 18px 24px;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--muted);
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: color .2s, border-color .2s;
+        }
+
+        .filter-btn:hover {
+            color: var(--navy);
+        }
+
+        .filter-btn.active {
+            color: var(--navy);
+            border-bottom-color: var(--navy);
+        }
+
+        .news-page-body {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+        }
+
+        .news-featured-row {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .news-featured-img {
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 36px;
+            text-decoration: none;
+            transition: transform .3s ease;
+        }
+
+        .news-featured-img:hover {
+            transform: translateY(-4px);
+        }
+
+        .news-featured-img h2 {
+            color: white;
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        .news-featured-img p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 12px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .news-featured-img .meta {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            margin-top: 16px;
+        }
+
+        .news-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .news-sidebar-item {
+            display: flex;
+            border-radius: 14px;
+            overflow: hidden;
+            background: white;
+            border: 0.5px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            transition: transform .3s, box-shadow .3s;
+        }
+
+        .news-sidebar-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 6px 20px rgba(26, 60, 110, 0.07);
+        }
+
+        .sidebar-color {
+            width: 6px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-text {
+            padding: 16px 18px;
+        }
+
+        .sidebar-text .cat {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .sidebar-text h4 {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--navy);
+            line-height: 1.5;
+        }
+
+        .sidebar-text .meta {
+            color: var(--muted);
+            font-size: 0.78rem;
+            margin-top: 6px;
+        }
+
+        .all-news-heading {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin: 50px 0 24px;
+        }
+
+        .all-news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .all-news-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 0.5px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform .3s, box-shadow .3s;
+        }
+
+        .all-news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(26, 60, 110, 0.08);
+        }
+
+        .all-news-card .card-img {
+            height: 140px;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+
+        .all-news-card .card-body {
+            padding: 20px;
+        }
+
+        .all-news-card .card-body .cat {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .all-news-card .card-body h4 {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--navy);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .all-news-card .card-body .meta {
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .load-more-wrap {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        @media(max-width:900px) {
+            .news-featured-row {
+                grid-template-columns: 1fr;
+            }
+
+            .all-news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .news-page-hero {
+                padding: 140px 24px 60px;
+            }
+        }
+
+        @media(max-width:600px) {
+            .all-news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-page-body {
+                padding: 40px 24px 80px;
+            }
+
+            .filter-inner {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sticky-nav" id="main-nav">
+        <div class="nav-top-bar" id="nav-top-bar">
+            <div class="nav-top-inner">
+                <span>Information for:</span>
+                <a href="#">Students</a><a href="#">Parents</a><a href="#">Alumni</a><a href="#">Staff</a><a
+                    href="#">Visitors</a>
+            </div>
+        </div>
+        <div class="nav-main">
+            <a href="index.html" class="logo">Oxford Secondary School</a>
+            <nav class="nav-links">
+                <a href="index.html#programs">Academics</a>
+                <a href="index.html#programs">Programs</a>
+                <a href="index.html#admissions">Admissions</a>
+                <a href="index.html#leadership">About</a>
+                <a href="news.html" style="color:white;font-weight:700;">News</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <a href="index.html#admissions" class="btn-apply">Apply Now</a>
+        </div>
+    </header>
+
+    <section class="news-page-hero">
+        <h1>Campus News</h1>
+        <p>Stories about people, research, achievements and innovation across Oxford Secondary School.</p>
+    </section>
+
+    <div class="filter-bar">
+        <div class="filter-inner">
+            <button class="filter-btn active" onclick="filterNews('all',this)">All Stories</button>
+            <button class="filter-btn" onclick="filterNews('achievement',this)">Achievement</button>
+            <button class="filter-btn" onclick="filterNews('science',this)">Science</button>
+            <button class="filter-btn" onclick="filterNews('sports',this)">Sports</button>
+            <button class="filter-btn" onclick="filterNews('culture',this)">Culture</button>
+            <button class="filter-btn" onclick="filterNews('admissions',this)">Admissions</button>
+        </div>
+    </div>
+
+    <div class="news-page-body">
+        <div class="news-featured-row">
+            <a href="#" class="news-featured-img" style="background:linear-gradient(135deg,#1A3C6E 0%,#2a5fa8 100%)">
+                <span class="news-category">ACHIEVEMENT</span>
+                <h2>Oxford students claim top ranks in national SEE examinations 2081</h2>
+                <p>Three Oxford students placed in the national top 10, continuing the school's proud tradition of
+                    academic excellence across Nepal.</p>
+                <span class="meta">April 2, 2082 BS &nbsp;·&nbsp; 4 min read</span>
+            </a>
+            <div class="news-sidebar">
+                <a href="#" class="news-sidebar-item">
+                    <div class="sidebar-color" style="background:#E8A020"></div>
+                    <div class="sidebar-text">
+                        <p class="cat">Science &amp; Innovation</p>
+                        <h4>Youth scientists from Grade 11 present research at provincial competition</h4><span
+                            class="meta">March 18, 2082 BS</span>
+                    </div>
+                </a>
+                <a href="#" class="news-sidebar-item">
+                    <div class="sidebar-color" style="background:#4ECDC4"></div>
+                    <div class="sidebar-text">
+                        <p class="cat">Athletics</p>
+                        <h4>Oxford athletes represent Rupandehi district in national games</h4><span class="meta">March
+                            10, 2082 BS</span>
+                    </div>
+                </a>
+                <a href="#" class="news-sidebar-item">
+                    <div class="sidebar-color" style="background:#96CEB4"></div>
+                    <div class="sidebar-text">
+                        <p class="cat">Arts &amp; Culture</p>
+                        <h4>Annual Drama Festival 2081 — a celebration of talent and expression</h4><span
+                            class="meta">February 28, 2082 BS</span>
+                    </div>
+                </a>
+                <a href="#" class="news-sidebar-item">
+                    <div class="sidebar-color" style="background:#FF6B6B"></div>
+                    <div class="sidebar-text">
+                        <p class="cat">Admissions 2082</p>
+                        <h4>Grade 11 admissions open for all four higher secondary streams</h4><span
+                            class="meta">February 15, 2082 BS</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <h2 class="all-news-heading">All Stories</h2>
+        <div class="all-news-grid" id="news-grid">
+            <a href="#" class="all-news-card" data-category="achievement">
+                <div class="card-img" style="background:linear-gradient(135deg,#1A3C6E,#2a5fa8)"><span
+                        class="news-category">ACHIEVEMENT</span></div>
+                <div class="card-body">
+                    <p class="cat">Achievement</p>
+                    <h4>SEE 2081 result: Oxford ranks #1 in Rupandehi district</h4><span class="meta">April 2, 2082
+                        BS</span>
+                </div>
+            </a>
+            <a href="#" class="all-news-card" data-category="science">
+                <div class="card-img" style="background:linear-gradient(135deg,#E8A020,#f0c060)"><span
+                        class="news-category" style="color:#1A3C6E;background:rgba(26,60,110,0.1)">SCIENCE</span></div>
+                <div class="card-body">
+                    <p class="cat">Science &amp; Innovation</p>
+                    <h4>Grade 11 students build solar-powered water purifier for science fair</h4><span
+                        class="meta">March 22, 2082 BS</span>
+                </div>
+            </a>
+            <a href="#" class="all-news-card" data-category="sports">
+                <div class="card-img" style="background:linear-gradient(135deg,#4ECDC4,#2ab5ac)"><span
+                        class="news-category">SPORTS</span></div>
+                <div class="card-body">
+                    <p class="cat">Athletics</p>
+                    <h4>Football team advances to provincial finals for the first time in school history</h4><span
+                        class="meta">March 12, 2082 BS</span>
+                </div>
+            </a>
+            <a href="#" class="all-news-card" data-category="culture">
+                <div class="card-img" style="background:linear-gradient(135deg,#96CEB4,#5aaf8a)"><span
+                        class="news-category">CULTURE</span></div>
+                <div class="card-body">
+                    <p class="cat">Arts &amp; Culture</p>
+                    <h4>Oxford student wins National Elocution Championship 2081</h4><span class="meta">February 20,
+                        2082 BS</span>
+                </div>
+            </a>
+            <a href="#" class="all-news-card" data-category="achievement">
+                <div class="card-img" style="background:linear-gradient(135deg,#45B7D1,#1a8fb5)"><span
+                        class="news-category">ACHIEVEMENT</span></div>
+                <div class="card-body">
+                    <p class="cat">Achievement</p>
+                    <h4>Oxford alumna selected for national youth science programme in Kathmandu</h4><span
+                        class="meta">February 10, 2082 BS</span>
+                </div>
+            </a>
+            <a href="#" class="all-news-card" data-category="admissions">
+                <div class="card-img" style="background:linear-gradient(135deg,#FF6B6B,#d94f4f)"><span
+                        class="news-category">ADMISSIONS</span></div>
+                <div class="card-body">
+                    <p class="cat">Admissions 2082</p>
+                    <h4>Scholarship results: 24 students receive merit-cum-need awards this year</h4><span
+                        class="meta">January 28, 2082 BS</span>
+                </div>
+            </a>
+            <a href="#" class="all-news-card" data-category="culture">
+                <div class="card-img" style="background:linear-gradient(135deg,#A29BFE,#6c5ce7)"><span
+                        class="news-category">CULTURE</span></div>
+                <div class="card-body">
+                    <p class="cat">Arts &amp; Culture</p>
+                    <h4>Drama Festival 2081 draws record audience of 800 parents and students</h4><span
+                        class="meta">January 15, 2082 BS</span>
+                </div>
+            </a>
+            <a href="#" class="all-news-card" data-category="science">
+                <div class="card-img" style="background:linear-gradient(135deg,#FDCB6E,#e17055)"><span
+                        class="news-category" style="color:#1A3C6E;background:rgba(26,60,110,0.1)">SCIENCE</span></div>
+                <div class="card-body">
+                    <p class="cat">Science &amp; Innovation</p>
+                    <h4>New digitalized science lab inaugurated — equipped with 40 workstations</h4><span
+                        class="meta">December 30, 2081 BS</span>
+                </div>
+            </a>
+            <a href="#" class="all-news-card" data-category="sports">
+                <div class="card-img" style="background:linear-gradient(135deg,#55efc4,#00b894)"><span
+                        class="news-category">SPORTS</span></div>
+                <div class="card-body">
+                    <p class="cat">Athletics</p>
+                    <h4>Oxford hosts inter-school athletics meet — 15 schools participate</h4><span
+                        class="meta">December 10, 2081 BS</span>
+                </div>
+            </a>
+        </div>
+        <div class="load-more-wrap">
+            <button class="btn-primary" onclick="alert('More stories coming soon!')">Load More Stories</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><span class="logo-footer">Oxford.</span>
+                <p>Oxford Secondary School<br>Established 1991 · Butwal, Nepal</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>School</h4><a href="index.html#about">About Us</a><a
+                        href="index.html#leadership">Leadership</a><a href="index.html#programs">Programs</a><a
+                        href="index.html#admissions">Admissions</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4><a href="news.html">Campus News</a><a href="#">Library</a><a href="#">Bus
+                        Tracking</a><a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Sister Institutions</h4><a href="#">Oxford College</a><a href="#">Ideal Secondary School</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Oxford Secondary School. All rights reserved.</p>
+            <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const intro = document.getElementById("intro");
+            if (intro) intro.style.display = "none";
+            const hp = document.getElementById("homepage");
+            if (hp) hp.style.transform = "none";
+            const nav = document.getElementById("main-nav");
+            if (nav) { nav.classList.remove("transparent"); nav.classList.add("scrolled"); }
+
+        });
+        function filterNews(category, btn) {
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            document.querySelectorAll(".all-news-card").forEach(card => {
+                card.style.display = (category === "all" || card.dataset.category === category) ? "block" : "none";
+            });
+        }
+    </script>
+</body>
+
+</html>

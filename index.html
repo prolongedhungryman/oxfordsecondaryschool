@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxford Secondary School — Butwal, Nepal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+    <!-- ===================== INTRO ANIMATION ===================== -->
+    <div class="intro-layer" id="intro">
+        <svg id="intro-svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <mask id="holeMask">
+                    <rect width="100%" height="100%" fill="white"></rect>
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+                        font-family="'DM Serif Display', serif"
+                        font-size="15vw" font-weight="bold" fill="black">OXFORD</text>
+                </mask>
+            </defs>
+            <rect width="100%" height="100%" fill="#1A3C6E" mask="url(#holeMask)"></rect>
+        </svg>
+    </div>
+
+    <!-- ===================== MAIN SITE ===================== -->
+    <div class="homepage" id="homepage">
+
+        <!-- STICKY NAV -->
+        <header class="sticky-nav" id="main-nav">
+            <div class="nav-top-bar" id="nav-top-bar">
+                <div class="nav-top-inner">
+                    <span>Information for:</span>
+                    <a href="#">Students</a>
+                    <a href="#">Parents</a>
+                    <a href="#">Alumni</a>
+                    <a href="#">Staff</a>
+                    <a href="#">Visitors</a>
+                </div>
+            </div>
+            <div class="nav-main" id="nav-main">
+                <a href="index.html" class="logo"><img src="Images/logo.png" alt="Oxford Secondary School" class="nav-logo"></a>
+                <nav class="nav-links">
+                    <a href="#programs">Academics</a>
+                    <a href="#programs">Programs</a>
+                    <a href="#admissions">Admissions</a>
+                    <a href="#leadership">About</a>
+                    <a href="#news">News</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <a href="#admissions" class="btn-apply">Apply Now</a>
+            </div>
+        </header>
+
+        <!-- ===================== HERO (VIDEO BG) ===================== -->
+        <section class="hero-section" id="hero">
+            <div class="hero-video-wrap">
+                <video autoplay muted loop playsinline class="hero-video" id="hero-video">
+                    <source src="campus-video.mp4" type="video/mp4">
+                </video>
+                <!-- Fallback gradient if no video -->
+                <div class="hero-video-fallback"></div>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-text" id="hero-text">
+                <h1>Oxford Secondary<br>School</h1>
+            </div>
+        </section>
+
+        <!-- ===================== MISSION ===================== -->
+        <section class="mission-section" id="about">
+            <div class="mission-inner">
+                <h2>A Mission Defined by Excellence</h2>
+                <p>At Oxford Secondary School, our mission of discovery and learning is energized by a spirit of ambition and possibility rooted in Butwal since 1991. Here you'll find learner-centered teaching, fully digitalized classrooms, and a child-friendly environment that nurtures holistic development — physical, emotional, and intellectual.</p>
+            </div>
+        </section>
+
+        <!-- ===================== STATS ===================== -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>1991</h3>
+                    <p>Established</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Academic Programs</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2076 BS</h3>
+                    <p>Accredited</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Butwal</h3>
+                    <p>Lumbini Province, Nepal</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== PROGRAMS ===================== -->
+        <section class="programs-section" id="programs">
+            <div class="section-header">
+                <h2>Academic Programs</h2>
+                <p>From Montessori to Higher Secondary — a complete educational journey under one institution.</p>
+            </div>
+            <div class="programs-grid">
+                <div class="uiverse-card c-red">
+                    <div class="card-img"><div class="img"></div></div>
+                    <div class="card-title">Montessori / Pre-School</div>
+                    <div class="card-subtitle">Play-based, child-led early learning that builds curiosity and confidence from the start.</div>
+                </div>
+                <div class="uiverse-card c-teal">
+                    <div class="card-img"><div class="img"></div></div>
+                    <div class="card-title">Grade 1–5 Elementary</div>
+                    <div class="card-subtitle">Core literacy, numeracy and life skills in a nurturing, activity-rich classroom environment.</div>
+                </div>
+                <div class="uiverse-card c-blue">
+                    <div class="card-img"><div class="img"></div></div>
+                    <div class="card-title">Grade 6–8 Lower Secondary</div>
+                    <div class="card-subtitle">Deeper subject exploration with critical thinking, labs, and co-curricular development.</div>
+                </div>
+                <div class="uiverse-card c-green">
+                    <div class="card-img"><div class="img"></div></div>
+                    <div class="card-title">Grade 9–10 SEE</div>
+                    <div class="card-subtitle">Rigorous preparation for the national SEE examinations and future academic pathways.</div>
+                </div>
+                <div class="uiverse-card c-gold wide">
+                    <div class="card-img"><div class="img"></div></div>
+                    <div class="card-title">Grade 11–12 Higher Secondary</div>
+                    <div class="card-subtitle">Four specialised streams to match every aspiration.</div>
+                    <div class="stream-tags">
+                        <span>Science</span>
+                        <span>Management</span>
+                        <span>Humanities</span>
+                        <span>Education</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CO-CURRICULAR ===================== -->
+        <section class="cocurr-section">
+            <div class="cocurr-inner">
+                <div class="cocurr-text">
+                    <span class="label-pill">Beyond the Classroom</span>
+                    <h2>Holistic Development at Its Core</h2>
+                    <p>Oxford students don't just study — they debate, paint, perform, and compete. Our co-curricular programmes have produced national toppers, youth scientists, national singers, and athletes who represent Nepal with pride.</p>
+                    <div class="activity-list">
+                        <span>Debating</span><span>Elocution</span><span>Essay Writing</span>
+                        <span>Drama</span><span>Painting</span><span>Sports</span><span>Excursions</span>
+                    </div>
+                </div>
+                <div class="cocurr-visual">
+                    <div class="uiverse-card c-gold">
+                        <div class="card-img"><div class="img"></div></div>
+                        <div class="card-title">National Toppers</div>
+                        <div class="card-subtitle">Consistent top ranks in national-level board examinations.</div>
+                    </div>
+                    <div class="uiverse-card c-teal">
+                        <div class="card-img"><div class="img"></div></div>
+                        <div class="card-title">Youth Scientists</div>
+                        <div class="card-subtitle">Pioneering research presented at provincial and national science fairs.</div>
+                    </div>
+                    <div class="uiverse-card c-green">
+                        <div class="card-img"><div class="img"></div></div>
+                        <div class="card-title">National Singers</div>
+                        <div class="card-subtitle">Award-winning vocalists competing in prestigious inter-school youth competitions.</div>
+                    </div>
+                    <div class="uiverse-card c-red">
+                        <div class="card-img"><div class="img"></div></div>
+                        <div class="card-title">Athletes</div>
+                        <div class="card-subtitle">Champions representing the district and province in national sporting events.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== ADMISSIONS ===================== -->
+        <section class="admissions-section" id="admissions">
+            <div class="admissions-inner">
+                <div class="admit-text">
+                    <span class="label-pill light">Admissions Open</span>
+                    <h2>Begin Your Oxford Journey</h2>
+                    <p>Entry requires an entrance examination and a parent interview. Scholarships are available on a merit-cum-need basis. Admission forms are available from the school office or via our website.</p>
+                    <div class="admit-actions">
+                        <a href="#" class="btn-primary">Download Form</a>
+                        <a href="#contact" class="btn-outline-dark">Contact Admissions</a>
+                    </div>
+                </div>
+                <div class="admit-steps">
+                    <div class="step"><span>01</span><p>Pick up or download the admission form</p></div>
+                    <div class="step"><span>02</span><p>Sit the entrance examination</p></div>
+                    <div class="step"><span>03</span><p>Attend parent interview</p></div>
+                    <div class="step"><span>04</span><p>Receive scholarship decision &amp; enrol</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== LEADERSHIP ===================== -->
+        <section class="leadership-section" id="leadership">
+            <div class="section-header">
+                <h2>Our Leadership</h2>
+                <p>Guided by experience, driven by purpose.</p>
+            </div>
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="avatar-wrap">
+                        <div class="avatar" style="background-image:url('Images/students.jpeg'); background-size:cover; background-position:center;"></div>
+                    </div>
+                    <div class="leader-info">
+                        <h3>Durga Datta Bhandari</h3>
+                        <p class="role">Chairman</p>
+                    </div>
+                </div>
+                <div class="leader-card featured">
+                    <div class="avatar-wrap">
+                        <div class="avatar" style="background-image:url('Images/principle.jpg'); background-size:cover; background-position:top;"></div>
+                    </div>
+                    <div class="leader-info">
+                        <h3>Dinesh Bhusal</h3>
+                        <p class="role">Principal</p>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="avatar-wrap">
+                        <div class="avatar" style="background-image:url('Images/students.jpeg'); background-size:cover; background-position:center;"></div>
+                    </div>
+                    <div class="leader-info">
+                        <h3>Suman Bhusal</h3>
+                        <p class="role">Vice Principal — XI &amp; XII</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CAMPUS NEWS ===================== -->
+        <section class="news-section" id="news">
+            <div class="section-header">
+                <h2>Campus News</h2>
+                <p>Stories about our students, achievements, and innovation across Oxford.</p>
+            </div>
+            <div class="news-grid">
+                <a href="news.html" class="news-card featured-news">
+                    <div class="news-img-wrap" style="background:linear-gradient(135deg,#1A3C6E 0%,#2a5fa8 100%)">
+                        <span class="news-category">ACHIEVEMENT</span>
+                        <h3>Oxford students claim top ranks in national SEE examinations 2081</h3>
+                    </div>
+                </a>
+                <a href="news.html" class="news-card">
+                    <div class="news-img-wrap small" style="background:linear-gradient(135deg,#1A3C6E 0%,#2a5fa8 100%)">
+                        <span class="news-category">SCIENCE</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-cat-text">Science &amp; Innovation</p>
+                        <h4>Youth scientists from Grade 11 present research at provincial competition</h4>
+                    </div>
+                </a>
+                <a href="news.html" class="news-card">
+                    <div class="news-img-wrap small" style="background:linear-gradient(135deg,#4ECDC4,#2ab5ac)">
+                        <span class="news-category">SPORTS</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-cat-text">Athletics</p>
+                        <h4>Oxford athletes represent Rupandehi district in national games</h4>
+                    </div>
+                </a>
+                <a href="news.html" class="news-card">
+                    <div class="news-img-wrap small" style="background:linear-gradient(135deg,#96CEB4,#5aaf8a)">
+                        <span class="news-category">CULTURE</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-cat-text">Arts &amp; Culture</p>
+                        <h4>Annual Drama Festival 2081 — a celebration of talent and expression</h4>
+                    </div>
+                </a>
+                <a href="news.html" class="news-card">
+                    <div class="news-img-wrap small" style="background:linear-gradient(135deg,#FF6B6B,#d94f4f)">
+                        <span class="news-category">ADMISSIONS</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-cat-text">Admissions 2082</p>
+                        <h4>Grade 11 admissions open — Science, Management, Humanities &amp; Education</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="news-cta">
+                <a href="news.html" class="btn-primary">View All News</a>
+            </div>
+        </section>
+
+        <!-- ===================== BUS TRACKING BANNER ===================== -->
+        <section class="bus-banner">
+            <div class="bus-inner">
+                <div class="bus-text">
+                    <span class="label-pill dark-pill">Coming Soon</span>
+                    <h2>Real-Time GPS Bus Tracking</h2>
+                    <p>Know exactly where your child's school bus is — live, on your phone. Launching soon for all Oxford parents and guardians.</p>
+                </div>
+                <button class="btn-secondary">Learn More</button>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section class="contact-section" id="contact">
+            <div class="contact-inner">
+                <div class="contact-text">
+                    <h2>Get in Touch</h2>
+                    <p>Sukkhanagar, Butwal, Rupandehi<br>Lumbini Province, Nepal</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>Block A (Admin)</strong>
+                            <a href="tel:071541363">071-541363</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Grade XI &amp; XII Block</strong>
+                            <a href="tel:071542419">071-542419</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Email</strong>
+                            <a href="mailto:info@oxfordsecondaryschool.edu.np">info@oxfordsecondaryschool.edu.np</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <a href="mailto:info@oxfordsecondaryschool.edu.np" class="btn-primary large">Send Us a Message</a>
+                    <a href="#admissions" class="btn-ghost">Admissions Info →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== FOOTER ===================== -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="logo-footer">Oxford.</span>
+                    <p>Oxford Secondary School<br>Established 1991 · Butwal, Nepal</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>School</h4>
+                        <a href="#about">About Us</a>
+                        <a href="#leadership">Leadership</a>
+                        <a href="#programs">Programs</a>
+                        <a href="#admissions">Admissions</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Resources</h4>
+                        <a href="news.html">Campus News</a>
+                        <a href="#">Library</a>
+                        <a href="#">Bus Tracking</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Sister Institutions</h4>
+                        <a href="#">Oxford College</a>
+                        <a href="#">Ideal Secondary School</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Oxford Secondary School. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- end .homepage -->
+
+    <script src="script.js"></script>
+</body>
+</html>
