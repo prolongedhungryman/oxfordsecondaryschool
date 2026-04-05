@@ -130,4 +130,29 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(style);
 
+    // =============================================
+    // 6. HAMBURGER MENU TOGGLE
+    // =============================================
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+    
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            mobileMenu.classList.toggle("open");
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = mobileMenu.classList.contains("open") ? "hidden" : "";
+        });
+
+        // Close menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("open");
+                document.body.style.overflow = "";
+            });
+        });
+    }
+
 });
